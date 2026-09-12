@@ -1,0 +1,16 @@
+# Python environment
+.venv/
+
+# Python-generated files
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Data — don't upload large/raw datasets to GitHub
+data/raw/*
+data/processed/*
