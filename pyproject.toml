@@ -4,6 +4,22 @@ version = "0.1.0"
 description = "Leakage-aware 30-minute Victorian NEM electricity demand forecasting with AEMO data, weather features, and XGBoost."
 readme = "README.md"
 requires-python = ">=3.11"
+authors = [
+    { name = "Samatar Ibrahim" },
+]
+keywords = [
+    "aemo",
+    "electricity",
+    "forecasting",
+    "machine-learning",
+    "time-series",
+    "xgboost",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
     "holidays>=0.104",
     "jupyter>=1.1.1",
@@ -16,6 +32,9 @@ dependencies = [
     "scikit-learn>=1.9.1",
     "xgboost>=3.2.0",
 ]
+
+[project.urls]
+Repository = "https://github.com/SamatarIbrahim/nem-demand-forecasting"
 
 [build-system]
 requires = ["uv_build>=0.12.13,<0.13.0"]
