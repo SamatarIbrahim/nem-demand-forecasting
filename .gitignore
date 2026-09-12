@@ -1,16 +1,29 @@
-# Python environment
+# Python environments
 .venv/
+.env
+.env.*
 
-# Python-generated files
+# Python-generated files and caches
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
 # Jupyter
 .ipynb_checkpoints/
 
-# macOS
+# Editors
+.vscode/
+.idea/
+
+# Operating system files
 .DS_Store
 
-# Data — don't upload large/raw datasets to GitHub
+# Data — do not upload large/raw datasets to GitHub
 data/raw/*
 data/processed/*
+
+# Local model artifacts
+models/

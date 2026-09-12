@@ -1,0 +1,19 @@
+{
+  "forecast_horizon_minutes": 30,
+  "holdout_start": "2026-05-01",
+  "holdout_end": "2026-07-01",
+  "test_rows": 17568,
+  "persistence": {
+    "mae_mw": 179.78,
+    "rmse_mw": 222.41
+  },
+  "final_model": {
+    "mae_mw": 78.34,
+    "rmse_mw": 107.71,
+    "median_absolute_error_mw": 57.45,
+    "p90_absolute_error_mw": 173.89,
+    "p95_absolute_error_mw": 226.87,
+    "p99_absolute_error_mw": 342.52
+  },
+  "mae_improvement_percent": 56.43
+}
