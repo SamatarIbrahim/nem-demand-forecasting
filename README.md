@@ -92,31 +92,35 @@ For a more explicit statement of intended use, assumptions, metrics, and limitat
 
 ## Data and time handling
 
-**Demand:** monthly AEMO `PRICE_AND_DEMAND` files for Victoria (`VIC1`) at five-minute frequency.
+**Demand:** monthly AEMO `PRICE_AND_DEMAND` files for Victoria (`VIC1`) at five-minute frequency. The build script automatically checks required columns, missing values, duplicate timestamps, region consistency, and five-minute continuity before saving the processed dataset.
 
 **Weather:** hourly Open-Meteo historical weather for central Melbourne. Weather timestamps are converted to fixed AEST to align with AEMO market time, then merged backward so no demand row receives a future weather observation.
 
-Raw and processed datasets are intentionally excluded from Git. The repository contains the code required to rebuild them.
+Raw and processed datasets are intentionally excluded from Git. The repository contains the code required to rebuild them. See the [data dictionary](docs/data-dictionary.md) for source and engineered field definitions.
 
 ## Repository map
 
 ```text
 .
 ├── .github/workflows/ci.yml         # automated lint + test checks
-├── docs/assets/                     # README figures
+├── docs/
+│   ├── assets/                      # README figures
+│   └── data-dictionary.md           # source and engineered field definitions
 ├── notebooks/                       # analysis from exploration to holdout evaluation
 ├── reports/
+│   ├── README.md                    # reporting-artifact notes
 │   └── final_metrics.json           # machine-readable headline metrics
 ├── scripts/
-│   ├── build_dataset.py             # download + combine AEMO data
+│   ├── build_dataset.py             # download, validate, and combine AEMO data
 │   ├── build_weather.py             # download + save Melbourne weather
 │   └── run_final_evaluation.py      # reproduce the frozen holdout evaluation
 ├── src/nem_demand_forecasting/
 │   ├── data.py                      # AEMO acquisition/loading helpers
 │   ├── features.py                  # leakage-safe feature engineering
 │   ├── modeling.py                  # frozen model + evaluation helpers
+│   ├── validation.py                # demand-series integrity checks
 │   └── weather.py                   # weather acquisition helpers
-├── tests/                           # unit tests for features and modelling
+├── tests/                           # unit tests for features, validation, and modelling
 ├── MODEL_CARD.md
 ├── pyproject.toml
 └── uv.lock
@@ -143,7 +147,7 @@ Requirements: Python 3.11+ and [`uv`](https://docs.astral.sh/uv/).
 # Install the locked environment, including developer tools
 uv sync --dev
 
-# Rebuild public-source datasets
+# Rebuild and validate public-source datasets
 uv run python scripts/build_dataset.py
 uv run python scripts/build_weather.py
 
