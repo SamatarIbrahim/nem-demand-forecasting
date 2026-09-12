@@ -88,7 +88,7 @@ Then open the notebooks in order. The processed parquet files are created under 
 Run quality checks with:
 
 ```bash
-uv run ruff check .
+uv run ruff check src scripts tests
 uv run pytest
 ```
 
