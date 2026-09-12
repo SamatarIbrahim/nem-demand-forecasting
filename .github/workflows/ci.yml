@@ -21,8 +21,8 @@ jobs:
       - name: Set up Python
         run: uv python install 3.11
 
-      - name: Install dependencies
-        run: uv sync --dev
+      - name: Install locked dependencies
+        run: uv sync --locked --dev
 
       - name: Lint package, scripts, and tests
         run: uv run ruff check src scripts tests
