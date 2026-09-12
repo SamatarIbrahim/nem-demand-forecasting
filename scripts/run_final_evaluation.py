@@ -7,7 +7,11 @@ from pathlib import Path
 
 import pandas as pd
 
-from nem_demand_forecasting.features import FINAL_FEATURES, add_forecast_features, merge_weather_backward
+from nem_demand_forecasting.features import (
+    FINAL_FEATURES,
+    add_forecast_features,
+    merge_weather_backward,
+)
 from nem_demand_forecasting.modeling import (
     evaluate_predictions,
     make_final_model,
@@ -20,7 +24,19 @@ WEATHER_PATH = Path("data/processed/melbourne_weather_2024-07_to_2026-06.parquet
 OUTPUT_PATH = Path("reports/final_metrics.json")
 
 
+def require_file(path: Path) -> None:
+    """Raise a useful error when a required processed dataset is missing."""
+
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Missing {path}. Build the processed datasets first; see README.md."
+        )
+
+
 def main() -> None:
+    require_file(DEMAND_PATH)
+    require_file(WEATHER_PATH)
+
     demand = pd.read_parquet(DEMAND_PATH)
     weather = pd.read_parquet(WEATHER_PATH)
 
@@ -61,10 +77,13 @@ def main() -> None:
 
     print("FINAL HOLDOUT TEST RESULTS")
     print("--------------------------")
-    print(f"Persistence MAE: {persistence_metrics['mae_mw']:.2f} MW")
-    print(f"Final model MAE: {final_metrics['mae_mw']:.2f} MW")
-    print(f"Improvement over persistence: {improvement:.2f}%")
-    print(f"Saved metrics: {OUTPUT_PATH}")
+    print(f"Test rows:        {len(test):,}")
+    print(f"Persistence MAE:  {persistence_metrics['mae_mw']:.2f} MW")
+    print(f"Persistence RMSE: {persistence_metrics['rmse_mw']:.2f} MW")
+    print(f"Final model MAE:  {final_metrics['mae_mw']:.2f} MW")
+    print(f"Final model RMSE: {final_metrics['rmse_mw']:.2f} MW")
+    print(f"MAE improvement:  {improvement:.2f}%")
+    print(f"Saved metrics:    {OUTPUT_PATH}")
 
 
 if __name__ == "__main__":
