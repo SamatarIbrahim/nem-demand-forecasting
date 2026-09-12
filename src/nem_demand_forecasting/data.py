@@ -45,7 +45,6 @@ def download_range(
     """Download monthly AEMO files between two YYYY-MM dates."""
 
     months = pd.period_range(start=start, end=end, freq="M")
-
     paths = []
 
     for period in months:
@@ -59,28 +58,18 @@ def download_range(
 
     return paths
 
+
 def load_monthly_files(paths: list[Path]) -> pd.DataFrame:
-    """Load and combine multiple AEMO monthly CSV files."""
+    """Load, combine, and chronologically sort AEMO monthly CSV files."""
 
-    frames = []
+    frames = [
+        pd.read_csv(path, parse_dates=["SETTLEMENTDATE"])
+        for path in paths
+    ]
 
-    for path in paths:
-        df = pd.read_csv(
-            path,
-            parse_dates=["SETTLEMENTDATE"],
-        )
+    if not frames:
+        raise ValueError("No monthly files were provided.")
 
-        frames.append(df)
+    combined = pd.concat(frames, ignore_index=True)
 
-    combined = pd.concat(
-        frames,
-        ignore_index=True,
-    )
-
-    combined = (
-        combined
-        .sort_values("SETTLEMENTDATE")
-        .reset_index(drop=True)
-    )
-
-    return combined
+    return combined.sort_values("SETTLEMENTDATE").reset_index(drop=True)
