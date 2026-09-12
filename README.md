@@ -9,6 +9,8 @@ A leakage-aware, end-to-end forecasting project for **Victorian operational elec
 
 The emphasis is not just model accuracy: the repository demonstrates reproducible data acquisition, time-series validation, leakage-safe feature engineering, baseline discipline, model comparison, backtesting, testing, and CI.
 
+**Start here:** [technical report](docs/technical-report.md) · [model card](MODEL_CARD.md) · [data dictionary](docs/data-dictionary.md) · [final evaluation notebook](notebooks/08_final_evaluation.ipynb)
+
 ![Final holdout performance](docs/assets/holdout-performance.svg)
 
 ## At a glance
@@ -105,7 +107,8 @@ Raw and processed datasets are intentionally excluded from Git. The repository c
 ├── .github/workflows/ci.yml         # automated lint + test checks
 ├── docs/
 │   ├── assets/                      # README figures
-│   └── data-dictionary.md           # source and engineered field definitions
+│   ├── data-dictionary.md           # source and engineered field definitions
+│   └── technical-report.md          # reviewer-friendly analytical narrative
 ├── notebooks/                       # analysis from exploration to holdout evaluation
 ├── reports/
 │   ├── README.md                    # reporting-artifact notes
@@ -128,16 +131,18 @@ Raw and processed datasets are intentionally excluded from Git. The repository c
 
 ## Notebook sequence
 
-| Notebook | Purpose |
-| --- | --- |
-| `01_explore_demand.ipynb` | one-month exploration and initial demand patterns |
-| `02_validate_historical_data.ipynb` | structural validation of the two-year series |
-| `03_historical_patterns.ipynb` | seasonality, intraday profiles, and lag relationships |
-| `04_baseline_models.ipynb` | persistence and historical baselines |
-| `05_linear_model.ipynb` | linear-regression benchmark and error diagnostics |
-| `06_gradient_boosting.ipynb` | XGBoost, feature ablation, and hourly diagnostics |
-| `07_weather_model.ipynb` | leakage-safe weather integration and rolling backtests |
-| `08_final_evaluation.ipynb` | frozen model evaluated on the unseen holdout |
+| Notebook | Purpose | Alternate renderer |
+| --- | --- | --- |
+| [`01_explore_demand.ipynb`](notebooks/01_explore_demand.ipynb) | one-month exploration and initial demand patterns | [nbviewer](https://nbviewer.org/github/SamatarIbrahim/nem-demand-forecasting/blob/main/notebooks/01_explore_demand.ipynb) |
+| [`02_validate_historical_data.ipynb`](notebooks/02_validate_historical_data.ipynb) | structural validation of the two-year series | [nbviewer](https://nbviewer.org/github/SamatarIbrahim/nem-demand-forecasting/blob/main/notebooks/02_validate_historical_data.ipynb) |
+| [`03_historical_patterns.ipynb`](notebooks/03_historical_patterns.ipynb) | seasonality, intraday profiles, and lag relationships | [nbviewer](https://nbviewer.org/github/SamatarIbrahim/nem-demand-forecasting/blob/main/notebooks/03_historical_patterns.ipynb) |
+| [`04_baseline_models.ipynb`](notebooks/04_baseline_models.ipynb) | persistence and historical baselines | [nbviewer](https://nbviewer.org/github/SamatarIbrahim/nem-demand-forecasting/blob/main/notebooks/04_baseline_models.ipynb) |
+| [`05_linear_model.ipynb`](notebooks/05_linear_model.ipynb) | linear-regression benchmark and error diagnostics | [nbviewer](https://nbviewer.org/github/SamatarIbrahim/nem-demand-forecasting/blob/main/notebooks/05_linear_model.ipynb) |
+| [`06_gradient_boosting.ipynb`](notebooks/06_gradient_boosting.ipynb) | XGBoost, feature ablation, and hourly diagnostics | [nbviewer](https://nbviewer.org/github/SamatarIbrahim/nem-demand-forecasting/blob/main/notebooks/06_gradient_boosting.ipynb) |
+| [`07_weather_model.ipynb`](notebooks/07_weather_model.ipynb) | leakage-safe weather integration and rolling backtests | [nbviewer](https://nbviewer.org/github/SamatarIbrahim/nem-demand-forecasting/blob/main/notebooks/07_weather_model.ipynb) |
+| [`08_final_evaluation.ipynb`](notebooks/08_final_evaluation.ipynb) | frozen model evaluated on the unseen holdout | [nbviewer](https://nbviewer.org/github/SamatarIbrahim/nem-demand-forecasting/blob/main/notebooks/08_final_evaluation.ipynb) |
+
+GitHub's notebook renderer is occasionally unreliable for output-heavy notebooks, so the technical report and nbviewer links provide renderer-independent ways to review the analysis.
 
 ## Reproduce locally
 
