@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+  <title id="title">Final holdout performance</title>
+  <desc id="desc">Comparison of persistence and final XGBoost plus weather model on MAE and RMSE. The final model reduces MAE by 56.43 percent.</desc>
+  <rect width="960" height="430" rx="20" fill="#ffffff"/>
+  <text x="48" y="58" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="30" font-weight="700" fill="#111827">Final holdout performance</text>
+  <text x="48" y="88" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="16" fill="#4b5563">Unseen May–June 2026 test period · 30-minute Victorian demand forecast</text>
+
+  <rect x="48" y="118" width="864" height="72" rx="14" fill="#eef6ff"/>
+  <text x="72" y="151" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="18" font-weight="600" fill="#1d4ed8">56.43% lower MAE than persistence</text>
+  <text x="72" y="176" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="14" fill="#475569">Final XGBoost + weather MAE: 78.34 MW · Persistence MAE: 179.78 MW</text>
+
+  <text x="48" y="238" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#111827">MAE</text>
+  <rect x="138" y="218" width="431" height="28" rx="7" fill="#cbd5e1"/>
+  <rect x="138" y="256" width="188" height="28" rx="7" fill="#2563eb"/>
+  <text x="582" y="239" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">Persistence 179.78 MW</text>
+  <text x="339" y="277" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#1d4ed8">Final 78.34 MW</text>
+
+  <text x="48" y="337" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#111827">RMSE</text>
+  <rect x="138" y="317" width="534" height="28" rx="7" fill="#cbd5e1"/>
+  <rect x="138" y="355" width="259" height="28" rx="7" fill="#2563eb"/>
+  <text x="685" y="338" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">Persistence 222.41 MW</text>
+  <text x="410" y="376" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#1d4ed8">Final 107.71 MW</text>
+
+  <circle cx="735" cy="408" r="6" fill="#cbd5e1"/>
+  <text x="748" y="413" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" fill="#64748b">Persistence</text>
+  <circle cx="842" cy="408" r="6" fill="#2563eb"/>
+  <text x="855" y="413" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" fill="#64748b">Final model</text>
+</svg>
