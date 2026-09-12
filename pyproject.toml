@@ -1,7 +1,7 @@
 [project]
 name = "nem-demand-forecasting"
 version = "0.1.0"
-description = "Add your description here"
+description = "Leakage-aware 30-minute Victorian NEM electricity demand forecasting with AEMO data, weather features, and XGBoost."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -17,9 +17,6 @@ dependencies = [
     "xgboost>=3.2.0",
 ]
 
-[project.scripts]
-nem-demand-forecasting = "nem_demand_forecasting:main"
-
 [build-system]
 requires = ["uv_build>=0.12.13,<0.13.0"]
 build-backend = "uv_build"
@@ -29,3 +26,10 @@ dev = [
     "pytest>=9.1.1",
     "ruff>=0.16.7",
 ]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
