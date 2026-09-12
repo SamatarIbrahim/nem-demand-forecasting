@@ -1,2 +1,3 @@
-def main() -> None:
-    print("Hello from nem-demand-forecasting!")
+"""Tools for the Victorian NEM demand-forecasting project."""
+
+__all__ = []
